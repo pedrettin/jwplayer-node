@@ -1,0 +1,23 @@
+{
+  "name": "jwplayer-node",
+  "version": "1.0.0",
+  "description": "Node module to easily interact with the jwplayer api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oeran93/jwplayer-node.git"
+  },
+  "keywords": [
+    "jwplayer",
+    "api"
+  ],
+  "author": "Nicola Pedretti",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oeran93/jwplayer-node/issues"
+  },
+  "homepage": "https://github.com/oeran93/jwplayer-node#readme"
+}
