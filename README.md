@@ -3,7 +3,7 @@
 Node module to easily make calls to the jwplayer api.
 
 # Example usage
-
+```
 const jwplayer = require('jwplayer')({api_key: 'XXX', api_secret: 'XXXXX'})
 
 module.exports = {
@@ -18,7 +18,7 @@ module.exports = {
   }
   
 }
-
+```
 # API
 
 On require make sure to pass jwplayer an object with your api_key and api_secret. You can find them in your jwplayer dashboard. [More info here](https://support.jwplayer.com/customer/portal/articles/2339133-accessing-your-api-key-secret)
