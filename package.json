@@ -19,5 +19,13 @@
   "bugs": {
     "url": "https://github.com/oeran93/jwplayer-node/issues"
   },
-  "homepage": "https://github.com/oeran93/jwplayer-node#readme"
+  "homepage": "https://github.com/oeran93/jwplayer-node#readme",
+  "devDependencies": {
+    "should": "^11.2.0"
+  },
+  "dependencies": {
+    "axios": "^0.15.3",
+    "sha1": "^1.1.1",
+    "underscore": "^1.8.3"
+  }
 }
