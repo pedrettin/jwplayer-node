@@ -4,7 +4,7 @@ Node module to easily make calls to the jwplayer api.
 
 # Example usage
 ```
-const jwplayer = require('jwplayer')({api_key: 'XXX', api_secret: 'XXXXX'})
+const jwplayer = require('jwplayer-node')({api_key: 'XXX', api_secret: 'XXXXX'})
 
 module.exports = {
 
