@@ -2,7 +2,6 @@ const sha1 = require('sha1')
 const _ = require('underscore')
 const url_tools = require('url')
 const querystring = require('querystring')
-const crypto = require('crypto')
 
 module.exports = function (config = {}, priv = {}) {
 
@@ -14,6 +13,9 @@ module.exports = function (config = {}, priv = {}) {
     api_format: 'json'
   }, config)
 
+  /*
+  * return {string} url for api call
+  */
   pub.get_api_call = function (path, params) {
     let {hostname, protocol} = options
     return url_tools.format({
@@ -24,8 +26,11 @@ module.exports = function (config = {}, priv = {}) {
     })
   }
 
+  /*
+  * return {object} all params required to make the api call
+  */
   priv.get_query = function (params) {
-    let {api_format, api_key, api_secret} = options
+    let {api_format, api_key} = options
     let all_params = _.extend({
       api_format,
       api_key,
@@ -36,10 +41,13 @@ module.exports = function (config = {}, priv = {}) {
     return all_params
   }
 
+  /*
+  * @return {string} hashed api signature
+  */
   priv.get_api_signature = function (params) {
-    params = _.extend({}, params)
-    params = Object.keys(params).sort().reduce((r, k) => (r[k] = params[k], r), {})
-    return sha1(querystring.stringify(params)+options.api_secret)
+    let new_params = _.extend({}, params)
+    new_params = Object.keys(params).sort().reduce((r, k) => (r[k] = params[k], r), {})
+    return sha1(querystring.stringify(new_params)+options.api_secret)
   }
 
   /*
