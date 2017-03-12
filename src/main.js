@@ -1,6 +1,5 @@
 const _ = require('underscore')
 const axios = require('axios')
-const tools = require('./tools.js')
 
 module.exports = function (credentials) {
 
