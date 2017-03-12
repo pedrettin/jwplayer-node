@@ -8,6 +8,8 @@ module.exports = function (credentials) {
 
   if (missing_param(credentials, ['api_key', 'api_secret'])) return  
 
+  let tools = require('./tools.js')(credentials)
+
   pub.call_api = function (config, params) {
     if (missing_param(config, ['path'])) return
     config = _.extend({method: 'get'}, config)
