@@ -2,6 +2,8 @@
 
 Node module to easily make calls to the jwplayer api.
 
+![alt tag]('./warning.png')
+
 # Example usage
 ```
 const jwplayer = require('jwplayer-node')({api_key: 'XXX', api_secret: 'XXXXX'})
@@ -16,7 +18,7 @@ module.exports = {
     .then(({data}) => res.send(data))
     .catch(err => console.log(err))
   }
-  
+
 }
 ```
 # API
@@ -27,12 +29,8 @@ On require make sure to pass jwplayer an object with your api_key and api_secret
 
 * parameters
   * config - object containing parameters to configure api_call
-    * method - get/post 
+    * method - get/post
     * path - apiversion/class/subclass REQUIRED
-      * current api version is v1 
+      * current api version is v1
       * you can find class subclass and api version on the [jwplayer api](https://developer.jwplayer.com/jw-platform/reference/v1/)
   * param - all needed for the specific api call.
-
-
-
-

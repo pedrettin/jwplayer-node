@@ -1,7 +1,9 @@
 const sha1 = require('sha1')
 const _ = require('underscore')
 const url_tools = require('url')
-const querystring = require('querystring')
+const querystring = require('query-string')
+const urlencode = require('urlencode')
+const utf8 = require('utf8')
 
 module.exports = function (config = {}, priv = {}) {
 
@@ -35,7 +37,7 @@ module.exports = function (config = {}, priv = {}) {
       api_format,
       api_key,
       api_nonce: priv.get_nonce(),
-      api_timestamp: Math.floor(Date.now()/1000)
+      api_timestamp: (Math.floor(Date.now()/1000)).toString()
     },params)
     all_params.api_signature = priv.get_api_signature(all_params)
     return all_params
@@ -46,8 +48,10 @@ module.exports = function (config = {}, priv = {}) {
   */
   priv.get_api_signature = function (params) {
     let new_params = _.extend({}, params)
-    new_params = Object.keys(params).sort().reduce((r, k) => (r[k] = params[k], r), {})
-    return sha1(querystring.stringify(new_params)+options.api_secret)
+    Object.keys(new_params).forEach(k => new_params[k] = utf8.encode(new_params[k])) /*utf8 encode all text params*/
+    Object.keys(new_params).forEach(k => new_params[k] = urlencode(new_params[k])) /*url encode all text params*/
+    new_params = Object.keys(new_params).sort().reduce((r, k) => (r[k] = new_params[k], r), {}) /*sort params by encoded name*/
+    return sha1(querystring.stringify(new_params, {encode: false})+options.api_secret) /*sha1 hex encoding*/
   }
 
   /*
@@ -56,7 +60,7 @@ module.exports = function (config = {}, priv = {}) {
   priv.get_nonce = function () {
     let min = 10000000
     let max = 99999999
-    return Math.floor(Math.random() * (max-min)) + min
+    return (Math.floor(Math.random() * (max-min)) + min).toString()
   }
 
   return pub
