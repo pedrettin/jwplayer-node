@@ -2,7 +2,7 @@
 
 Node module to easily make calls to the jwplayer api.
 
-![alt tag]('./warning.png')
+![alt tag]('warning.png')
 
 # Example usage
 ```
