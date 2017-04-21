@@ -23,7 +23,7 @@ module.exports = function (config = {}, priv = {}) {
     return url_tools.format({
       hostname,
       protocol,
-      query: priv.get_query(params),
+      query: priv.get_query(priv.strip_params(params)),
       pathname: path
     })
   }
@@ -61,6 +61,13 @@ module.exports = function (config = {}, priv = {}) {
     let min = 10000000
     let max = 99999999
     return (Math.floor(Math.random() * (max-min)) + min).toString()
+  }
+
+  /*
+  * @return {object} object where all keys are stripped of the chars ( ) * '
+  */
+  priv.strip_params = function (params) {
+    return Object.keys(params).reduce((o,k) => o[k] = params[k].replace(/\(|\)|\*|\'/,'') ,{})
   }
 
   return pub
