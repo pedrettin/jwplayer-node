@@ -67,7 +67,10 @@ module.exports = function (config = {}, priv = {}) {
   * @return {object} object where all keys are stripped of the chars ( ) * '
   */
   priv.strip_params = function (params) {
-    return Object.keys(params).reduce((o,k) => o[k] = params[k].replace(/\(|\)|\*|\'/,'') ,{})
+    return Object.keys(params).reduce((o,k) => {
+      o[k] = params[k].replace(/\(|\)|\*|\'/,'')
+      return o
+    },{})
   }
 
   return pub
