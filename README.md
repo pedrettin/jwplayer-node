@@ -15,11 +15,13 @@ For the moment we decided to strip them from all parameters.
 const jwplayer = require('jwplayer-node')({api_key: 'XXX', api_secret: 'XXXXX'})
 const video_params = {title: 'new video',description: 'this is a new video I am uploading'}
 
-jwplayer.call_api({
+jwplayer.call_api(
+{
   method: 'post',
   path: '/v1/videos/create',
-},video_params)
-.then(({data}) => /*jwplayer response*/)
+},
+video_params)
+.then(succ => /*jwplayer response*/)
 .catch(err => /*jwplayer error response*/)
 ```
 # API
@@ -35,3 +37,5 @@ On require make sure to pass jwplayer an object with your api_key and api_secret
       * current api version is v1
       * you can find class subclass and api version on the [jwplayer api](https://developer.jwplayer.com/jw-platform/reference/v1/)
   * param - all needed for the specific api call.
+* returns
+  * promise containing jwplayer response
