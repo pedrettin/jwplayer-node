@@ -2,24 +2,27 @@
 
 Node module to easily make calls to the jwplayer api.
 
-![alt tag](warning.png)
+# Warnings
+
+**Jwplayer does not support [4 bytes unicode chars](https://unicode-table.com/en/#myanmar).
+Avoid using them in the parameters you send the API.
+
+In addition there seems to be a problem with the following four chars: ( ) ' *
+For the moment we decided to strip them from all parameters.**
 
 # Example usage
 ```javascript
 const jwplayer = require('jwplayer-node')({api_key: 'XXX', api_secret: 'XXXXX'})
 
-module.exports = {
-
-  create_video: function (req, res) {
-    jwplayer.call_api({
-      method: 'post',
-      path: '/v1/videos/create',
-    }, req.body.data)
-    .then(({data}) => res.send(data))
-    .catch(err => console.log(err))
-  }
-
-}
+jwplayer.call_api({
+  method: 'post',
+  path: '/v1/videos/create',
+},{
+  title: 'new video',
+  description: 'this is a new video I am uploading'
+})
+.then(({data}) => console.log("everything went fine. data contains jwplayer response"))
+.catch(err => console.log("something went wrong. err.message will tell us more"))
 ```
 # API
 
