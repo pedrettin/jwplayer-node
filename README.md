@@ -13,16 +13,14 @@ For the moment we decided to strip them from all parameters.
 # Example usage
 ```javascript
 const jwplayer = require('jwplayer-node')({api_key: 'XXX', api_secret: 'XXXXX'})
+const video_params = {title: 'new video',description: 'this is a new video I am uploading'}
 
 jwplayer.call_api({
   method: 'post',
   path: '/v1/videos/create',
-},{
-  title: 'new video',
-  description: 'this is a new video I am uploading'
-})
-.then(({data}) => console.log("everything went fine. data contains jwplayer response"))
-.catch(err => console.log("something went wrong. err.message will tell us more"))
+},video_params)
+.then(({data}) => /*jwplayer response*/)
+.catch(err => /*jwplayer error response*/)
 ```
 # API
 
