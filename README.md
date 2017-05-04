@@ -5,7 +5,7 @@ Node module to easily make calls to the jwplayer api.
 ![alt tag](warning.png)
 
 # Example usage
-```
+```javascript
 const jwplayer = require('jwplayer-node')({api_key: 'XXX', api_secret: 'XXXXX'})
 
 module.exports = {
