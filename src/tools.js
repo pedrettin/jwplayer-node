@@ -68,7 +68,7 @@ module.exports = function (config = {}, priv = {}) {
   */
   priv.strip_params = function (params) {
     return Object.keys(params).reduce((o,k) => {
-      o[k] = params[k].replace(/\)|\(|\*|\'/g,'')
+      o[k] = params[k].toString().replace(/\)|\(|\*|\'/g,'')
       return o
     },{})
   }
