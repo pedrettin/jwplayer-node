@@ -7,9 +7,6 @@ Node module to easily make calls to the jwplayer api.
 Jwplayer does not support [4 bytes unicode chars](https://unicode-table.com/en/#myanmar).
 Avoid using them in the parameters you send the API.
 
-In addition there seems to be a problem with the following four chars: `( ) ' *`
-For the moment we decided to strip them from all parameters.
-
 # Example usage
 ```javascript
 const jwplayer = require('jwplayer-node')({api_key: 'XXX', api_secret: 'XXXXX'})
